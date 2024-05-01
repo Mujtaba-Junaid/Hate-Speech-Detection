@@ -6,11 +6,18 @@ from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 import speech_recognition as sr
+import re
 #data set is from kaggle
 data = pd.read_csv('labeled_data.csv')
+def preprocess_text(text):
+    text = text.lower()
+    text = re.sub(r'[^a-zA-Z\s]', '', text)
+    return text
+
+data['tweet'] = data['tweet'].apply(preprocess_text)
 model = LogisticRegression(max_iter=1000)
 
-X_train, X_test, y_train, y_test = train_test_split(data['tweet'], data['class'], test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(data['tweet'], data['hate_speech'], test_size=0.2, random_state=42)
 
 vectorizer = TfidfVectorizer()
 X_train_vec = vectorizer.fit_transform(X_train)
@@ -90,5 +97,5 @@ def main():
     root.mainloop()
 
 
-if _name=="main_":
+if __name__=="__main__":
     main()
