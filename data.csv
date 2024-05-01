@@ -1,0 +1,11 @@
+﻿text,label
+"I hate you!",hate
+"Love your work!",non_hate
+"Go back to your country, you don't belong here.",hate
+"Today's weather is beautiful.",non_hate
+"This is a racist comment.",hate
+"Respect everyone's opinion.",non_hate
+"Kill all [ethnic group].",hate
+"We should promote diversity.",non_hate
+"Women belong in the kitchen.",hate
+"Gender equality is important.",non_hate
